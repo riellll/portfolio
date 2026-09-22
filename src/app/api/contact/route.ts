@@ -3,7 +3,7 @@ import Contact from "@/model/Contact";
 import connect from "@/utils/db";
 import { NextResponse } from "next/server";
 
-export const GET = async (request) => {
+export const GET = async (request: Request) => {
   try {
     await connect();
 
@@ -15,7 +15,7 @@ export const GET = async (request) => {
   }
 };
 
-export const POST = async (request) => {
+export const POST = async (request: Request) => {
   const body = await request.json();
 
   // console.log(body);

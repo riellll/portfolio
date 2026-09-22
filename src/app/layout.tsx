@@ -4,8 +4,8 @@ import Footer from "../components/Footer";
 import { Toaster } from "@/components/ui/toaster"
 import FloatingAction from "../components/theme/FloatingAction";
 import "./globals.css";
-import StyledComponentsRegistry from "@/lib/AntdRegistry";
 import { Inter } from "next/font/google";
+import type { ReactNode } from "react";
 import { NextProviders } from "./providers";
 import Navbarr from "../components/Navbarr";
 
@@ -16,19 +16,17 @@ export const metadata = {
   description: "Gabriel portfolio web developer",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="dark:bg-gradient-to-r dark:from-gray-800 dark:to-slate-900">
+      <body className="dark:bg-linear-to-r dark:from-gray-800 dark:to-slate-900">
         <Providers>
           <NextProviders>
-            <StyledComponentsRegistry>
-              <Navbarr />
-              {children}
-              <Toaster/>
-              <Footer />
-              {/* <FloatingAction /> */}
-            </StyledComponentsRegistry>
+            <Navbarr />
+            {children}
+            <Toaster/>
+            <Footer />
+            {/* <FloatingAction /> */}
           </NextProviders>
         </Providers>
       </body>

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import LoadingButton from "./spinner/LoadingButton";
 // import { HiOutlineMailOpen, HiOutlineLocationMarker } from "react-icons/Hi";
 // import { ImLocation2 } from "react-icons/im";
@@ -11,13 +11,14 @@ const Contact = () => {
   const { toast } = useToast()
 
 
-  const submitForm = async (e) => {
+  const submitForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
     setSendLoading(true);
     // console.log(e.target[0].value);
-    const name = e.target[0].value;
-    const email = e.target[1].value;
-    const message = e.target[2].value;
+    const name = (form[0] as HTMLInputElement).value;
+    const email = (form[1] as HTMLInputElement).value;
+    const message = (form[2] as HTMLTextAreaElement).value;
     console.log(name, email, message);
 
     try {
@@ -41,7 +42,7 @@ const Contact = () => {
         throw new Error("Faild to send request" + res.status);
       }
       setSendLoading(false);
-      e.target.reset();
+      form.reset();
       toast({
         description: "Your message has been sent.",
       });
@@ -54,7 +55,7 @@ const Contact = () => {
   return (
     <div className="grid sm:gap-10 gap-5 pt-5 lg:mt-20 content-center justify-items-center text-center max-w-5xl mx-auto md:px-7 sm:mb-20 ">
       <h1 className="text-3xl font-bold justify-self-start text-gray-900 dark:text-white ">
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-gray-900 to-gray-950 dark:to-emerald-600 dark:via-cyan-500 dark:from-cyan-400">
+        <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-800 via-gray-900 to-gray-950 dark:to-emerald-600 dark:via-cyan-500 dark:from-cyan-400">
           Contact Me
         </span>
       </h1>
@@ -84,7 +85,7 @@ const Contact = () => {
             <input
               type="text"
               id="name"
-              className="shadow-sm bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg outline-none ring-0 focus:shadow-none focus:outline-none border focus:border-slate-600 focus:ring-0 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-0 dark:focus:border-slate-600 dark:shadow-sm-light"
+              className="shadow-xs bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg outline-hidden ring-0 focus:shadow-none focus:outline-hidden border focus:border-slate-600 focus:ring-0 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-0 dark:focus:border-slate-600 dark:shadow-sm-light"
               placeholder="name..."
               autoComplete="on"
               required
@@ -100,7 +101,7 @@ const Contact = () => {
             <input
               type="text"
               id="company"
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+              className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
               placeholder="company..."
               autoComplete="on"
               required
@@ -116,7 +117,7 @@ const Contact = () => {
             <input
               type="email"
               id="email"
-              className="shadow-sm bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg outline-none ring-0 focus:shadow-none focus:outline-none border focus:border-slate-600 focus:ring-0 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-0 dark:focus:border-slate-600 dark:shadow-sm-light"
+              className="shadow-xs bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg outline-hidden ring-0 focus:shadow-none focus:outline-hidden border focus:border-slate-600 focus:ring-0 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-0 dark:focus:border-slate-600 dark:shadow-sm-light"
               placeholder="name@example.com"
               autoComplete="on"
               required
@@ -131,8 +132,8 @@ const Contact = () => {
           </label>
           <textarea
             id="message"
-            rows="4"
-            className="shadow-sm bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg outline-none ring-0 focus:shadow-none focus:outline-none border focus:border-slate-600 focus:ring-0 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-0 dark:focus:border-slate-600 dark:shadow-sm-light"
+            rows={4}
+            className="shadow-xs bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg outline-hidden ring-0 focus:shadow-none focus:outline-hidden border focus:border-slate-600 focus:ring-0 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-0 dark:focus:border-slate-600 dark:shadow-sm-light"
             placeholder="Leave a comment..."
             autoComplete="on"
             required
@@ -143,9 +144,9 @@ const Contact = () => {
               className={`font-semibold grow rounded-lg py-2 px-3 text-white bg-slate-900 shadow-lg shadow-slate-900/50 ${
                 !sendLoading &&
                 `hover:shadow-xl hover:shadow-slate-900/40 hover:bg-slate-950`
-              } dark:text-black dark:shadow-lg dark:bg-gradient-to-r dark:from-cyan-500 dark:via-cyan-400 dark:to-emerald-600 ${
+              } dark:text-black dark:shadow-lg dark:bg-linear-to-r dark:from-cyan-500 dark:via-cyan-400 dark:to-emerald-600 ${
                 !sendLoading &&
-                "dark:hover:bg-gradient-to-br dark:hover:bg-gray-300 dark:hover:shadow-xl dark:hover:shadow-gray-950/100"
+                "dark:hover:bg-linear-to-br dark:hover:bg-gray-300 dark:hover:shadow-xl dark:hover:shadow-gray-950"
               } dark:shadow-gray-950/80`}
               disabled={sendLoading && true}
             >

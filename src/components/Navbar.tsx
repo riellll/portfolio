@@ -4,9 +4,9 @@ import { Link } from "react-scroll";
 const Navbar = () => {
   return (
     <>
-      <nav className="bg-white border-gray-200 dark:bg-gradient-to-r dark:from-gray-800 dark:to-slate-900 shadow-lg sticky top-0">
-        <div className="max-w-screen-xl flex flex-wrap items-center sm:justify-between min-[320px]:justify-center mx-auto p-2 sm:p-4">
-          <a href="#" as="home" className="flex items-center">
+      <nav className="bg-white border-gray-200 dark:bg-linear-to-r dark:from-gray-800 dark:to-slate-900 shadow-lg sticky top-0">
+        <div className="max-w-(--breakpoint-xl) flex flex-wrap items-center sm:justify-between min-[320px]:justify-center mx-auto p-2 sm:p-4">
+          <a href="#" className="flex items-center">
             <h1 className="self-center text-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               gab.<span className="text-black dark:text-cyan-500">dev</span>
             </h1>
