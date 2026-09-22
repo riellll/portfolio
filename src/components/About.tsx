@@ -15,7 +15,7 @@ const About = () => {
       />
       <div className="md:mt-14">
         <p className="text-2xl font-bold text-gray-900 dark:text-white pb-3">
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-gray-900 to-gray-950 dark:to-emerald-600 dark:via-cyan-500 dark:from-cyan-400">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-800 via-gray-900 to-gray-950 dark:to-emerald-600 dark:via-cyan-500 dark:from-cyan-400">
             About Me
           </span>
         </p>
@@ -35,7 +35,7 @@ const About = () => {
         <Link
               href={"https://drive.google.com/file/d/1ZfstMQchKYjGlDkFyk6Gr0WUvF1XUWkT/view?usp=sharing"}
               target="_blank"
-              className="transition ease-in-out delay-100 duration-1000 flex gap-2 mt-4 font-semibold rounded-lg py-2 px-3 text-white bg-slate-900 shadow-lg shadow-slate-900/50 hover:shadow-xl hover:shadow-slate-900/40 dark:text-black hover:text-black hover:bg-white dark:shadow-lg dark:bg-gradient-to-r dark:from-cyan-500 dark:via-cyan-400 dark:to-emerald-600 dark:hover:bg-gradient-to-br dark:hover:bg-gray-300 dark:hover:shadow-xl dark:hover:shadow-gray-950/100 dark:shadow-gray-950/80"
+              className="transition ease-in-out delay-100 duration-1000 flex gap-2 mt-4 font-semibold rounded-lg py-2 px-3 text-white bg-slate-900 shadow-lg shadow-slate-900/50 hover:shadow-xl hover:shadow-slate-900/40 dark:text-black hover:text-black hover:bg-white dark:shadow-lg dark:bg-linear-to-r dark:from-cyan-500 dark:via-cyan-400 dark:to-emerald-600 dark:hover:bg-linear-to-br dark:hover:bg-gray-300 dark:hover:shadow-xl dark:hover:shadow-gray-950 dark:shadow-gray-950/80"
             >
               <span className='pt-1'>
               <BsFillFileEarmarkFontFill />
@@ -45,7 +45,7 @@ const About = () => {
         <Link
               href={"https://github.com/riellll"}
               target="_blank"
-              className="transition ease-in-out delay-100 duration-1000 flex gap-2 mt-4 font-semibold rounded-lg py-2 px-3 text-white bg-slate-900 shadow-lg shadow-slate-900/50 hover:shadow-xl hover:shadow-slate-900/40 dark:text-black hover:text-black hover:bg-white dark:shadow-lg dark:bg-gradient-to-r dark:from-cyan-500 dark:via-cyan-400 dark:to-emerald-600 dark:hover:bg-gradient-to-br dark:hover:bg-gray-300 dark:hover:shadow-xl dark:hover:shadow-gray-950/100 dark:shadow-gray-950/80"
+              className="transition ease-in-out delay-100 duration-1000 flex gap-2 mt-4 font-semibold rounded-lg py-2 px-3 text-white bg-slate-900 shadow-lg shadow-slate-900/50 hover:shadow-xl hover:shadow-slate-900/40 dark:text-black hover:text-black hover:bg-white dark:shadow-lg dark:bg-linear-to-r dark:from-cyan-500 dark:via-cyan-400 dark:to-emerald-600 dark:hover:bg-linear-to-br dark:hover:bg-gray-300 dark:hover:shadow-xl dark:hover:shadow-gray-950 dark:shadow-gray-950/80"
             >
               <span className='pt-1'>
               <BsGithub />
@@ -55,7 +55,7 @@ const About = () => {
             <Link
               href={"https://www.linkedin.com/in/gabriel-noe-napiere-88009525a/"}
               target="_blank"
-              className="transition ease-in-out delay-100 duration-1000 flex gap-2 mt-4 font-semibold rounded-lg py-2 px-3 text-white bg-slate-900 shadow-lg shadow-slate-900/50 hover:shadow-xl hover:shadow-slate-900/40 dark:text-black hover:text-black hover:bg-white dark:shadow-lg dark:bg-gradient-to-r dark:from-cyan-500 dark:via-cyan-400 dark:to-emerald-600 dark:hover:bg-gradient-to-br dark:hover:bg-gray-300 dark:hover:shadow-xl dark:hover:shadow-gray-950/100 dark:shadow-gray-950/80"
+              className="transition ease-in-out delay-100 duration-1000 flex gap-2 mt-4 font-semibold rounded-lg py-2 px-3 text-white bg-slate-900 shadow-lg shadow-slate-900/50 hover:shadow-xl hover:shadow-slate-900/40 dark:text-black hover:text-black hover:bg-white dark:shadow-lg dark:bg-linear-to-r dark:from-cyan-500 dark:via-cyan-400 dark:to-emerald-600 dark:hover:bg-linear-to-br dark:hover:bg-gray-300 dark:hover:shadow-xl dark:hover:shadow-gray-950 dark:shadow-gray-950/80"
             >
               <span className='pt-1'>
               <BsLinkedin />

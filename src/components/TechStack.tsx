@@ -7,14 +7,14 @@ import {
   PopoverTrigger,
   PopoverContent,
   Button,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 const fadeAnimationVariants = {
   initial: {
     opacity: 0,
     y: 100,
   },
-  animate: (index) => ({
+  animate: (index: number) => ({
     opacity: 1,
     y: 0,
     transition: {
@@ -44,7 +44,7 @@ const TechStack = () => {
             <Popover placement="bottom" showArrow={true}>
               <PopoverTrigger>
                 <Button
-                  className="h-14 bg-gradient-to-r from-neutral-300 via-neutral-400 to-neutral-600 hover:bg-gradient-to-br dark:bg-gradient-to-r dark:from-slate-600 dark:via-slate-700 dark:to-slate-800 dark:hover:bg-gradient-to-br border-neutral-500 dark:border-gray-600"
+                  className="h-14 bg-linear-to-r from-neutral-300 via-neutral-400 to-neutral-600 hover:bg-linear-to-br dark:bg-linear-to-r dark:from-slate-600 dark:via-slate-700 dark:to-slate-800 dark:hover:bg-linear-to-br border-neutral-500 dark:border-gray-600"
                   variant="bordered"
                 >
                   <Image

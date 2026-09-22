@@ -1,16 +1,23 @@
 import GetMessage from "@/lib/GetMessage";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Message",
   description: "list of messages",
 };
 
-const Message = async ({ searchParams }) => {
-  const data = await GetMessage();
+const Message = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) => {
+  const { pass } = await searchParams;
   let mess = false;
-  if (searchParams.pass === process.env.SEARCHPASS) {
+  if (process.env.SEARCHPASS && pass === process.env.SEARCHPASS) {
     mess = true;
   }
+  const data = mess ? await GetMessage() : [];
   // console.log(data);
   ////////////////////////////////
 /*   const formatter = new Intl.RelativeTimeFormat(undefined, {
@@ -54,7 +61,7 @@ const Message = async ({ searchParams }) => {
           // console.log(formatTimeAgo(new Date(item.createdAt)));
           return (
             <div
-              className="block m-5 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              className="block m-5 p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
               key={item._id}
             >
               <h5 className="mb-2 text-md text-center font-normal tracking-tight text-gray-900 dark:text-white">

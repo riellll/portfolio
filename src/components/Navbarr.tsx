@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, NavbarMenuToggle, NavbarMenuItem, NavbarMenu} from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, NavbarMenuToggle, NavbarMenuItem, NavbarMenu} from "@heroui/react";
 import { Link } from "react-scroll";
 import {navbarItem } from '@/constants';
 import FloatingAction from './theme/FloatingAction';
@@ -12,10 +12,10 @@ const Navbarr = () => {
 
 
   return (
-    <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} className='dark:bg-gradient-to-r dark:from-gray-800 dark:to-slate-900 md:px-16 sm:px-14'>
+    <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} className='dark:bg-linear-to-r dark:from-gray-800 dark:to-slate-900 md:px-16 sm:px-14'>
       <NavbarContent justify="start">
         <NavbarItem>
-        <a href="#" as="home" className="flex items-center pr-4">
+        <a href="#" className="flex items-center pr-4">
             <h1 className="self-center text-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               gab.<span className="text-black dark:text-cyan-500">dev</span>
             </h1>
@@ -63,7 +63,7 @@ const Navbarr = () => {
             <FloatingAction/>
           </NavbarItem>
       </NavbarContent> */}
-      <NavbarMenu  className='dark:bg-gradient-to-r dark:from-gray-800 dark:to-slate-900'>
+      <NavbarMenu  className='dark:bg-linear-to-r dark:from-gray-800 dark:to-slate-900'>
         {navbarItem.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
@@ -76,7 +76,7 @@ const Navbarr = () => {
               delay={500}
               onSetActive={() => setIsActive(item.value)}
             >
-              <p onClick={() => setIsMenuOpen(!isMenuOpen)} className={isActive === item.value && 'dark:text-cyan-500'}>{item.label}</p>
+              <p onClick={() => setIsMenuOpen(!isMenuOpen)} className={isActive === item.value ? 'dark:text-cyan-500' : undefined}>{item.label}</p>
             </Link>
           </NavbarMenuItem>
         ))}
