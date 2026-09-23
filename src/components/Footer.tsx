@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex items-center gap-4">
           <span className="text-2xl font-extrabold tracking-tight">GN</span>
           <div>
-            <p className="text-sm font-medium">Gabriel Napiere</p>
+            <p className="text-sm font-medium">Gabriel Noe Napiere</p>
             <p className="text-xs text-neutral-500 dark:text-neutral-400">Full-Stack Software Engineer · Manila, Philippines</p>
           </div>
         </div>
@@ -21,7 +21,7 @@ const Footer = () => {
             <a href={`mailto:${links.email}`} aria-label="Email"><Mail className="size-5" /></a>
           </div>
           <p className="border-l border-neutral-200 pl-6 text-xs text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">
-            &#169; {new Date().getFullYear()} Gabriel Napiere
+            &#169; {new Date().getFullYear()} Gabriel Noe Napiere
             <br />
             All rights reserved.
           </p>

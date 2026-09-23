@@ -10,8 +10,8 @@ import Navbarr from "../components/Navbarr";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Gabriel Napiere | Portfolio",
-  description: "Gabriel Napiere, a full-stack software engineer based in Manila, Philippines.",
+  title: "Gabriel Noe Napiere | Portfolio",
+  description: "Gabriel Noe Napiere, a full-stack software engineer based in Manila, Philippines.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

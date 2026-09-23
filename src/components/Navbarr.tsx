@@ -13,7 +13,7 @@ const Navbarr = () => {
       <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
         <Link to="hero" smooth duration={500} className="flex cursor-pointer items-center gap-4">
           <span className="text-2xl font-extrabold tracking-tight">GN</span>
-          <span className="hidden text-sm font-medium sm:block">Gabriel Napiere</span>
+          <span className="hidden text-sm font-medium sm:block">Gabriel Noe Napiere</span>
         </Link>
 
         <div className="hidden items-center gap-8 sm:flex">
