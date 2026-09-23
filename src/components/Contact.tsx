@@ -1,54 +1,45 @@
 "use client";
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import LoadingButton from "./spinner/LoadingButton";
-// import { HiOutlineMailOpen, HiOutlineLocationMarker } from "react-icons/Hi";
-// import { ImLocation2 } from "react-icons/im";
 import { useToast } from "@/components/ui/use-toast"
-import { ToastAction } from "@/components/ui/toast"
 
 const Contact = () => {
   const [sendLoading, setSendLoading] = useState(false);
   const { toast } = useToast()
 
-
   const submitForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
+    const data = new FormData(form);
     setSendLoading(true);
-    // console.log(e.target[0].value);
-    const name = (form[0] as HTMLInputElement).value;
-    const email = (form[1] as HTMLInputElement).value;
-    const message = (form[2] as HTMLTextAreaElement).value;
-    console.log(name, email, message);
 
     try {
-      const res = await fetch(`/api/contact`, {
+      const res = await fetch("/api/contact", {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name,
-          email,
-          message,
+          name: data.get("name"),
+          email: data.get("email"),
+          message: data.get("message"),
         }),
       });
       if (!res.ok) {
-        console.log(res.status);
-        setSendLoading(false);
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: "faild to send message.",
-          action: <ToastAction altText="Try again">Try again</ToastAction>,
-        })
-        throw new Error("Faild to send request" + res.status);
+        throw new Error(`Failed to send message: ${res.status}`);
       }
-      setSendLoading(false);
       form.reset();
       toast({
         description: "Your message has been sent.",
       });
     } catch (error) {
-      console.log(error);
-      throw new Error("Faild to send request" + error);
+      // covers both error responses and network failures, so the button never stays stuck
+      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "Your message couldn't be sent. Please try again.",
+      });
+    } finally {
+      setSendLoading(false);
     }
   };
 
@@ -69,15 +60,15 @@ const Contact = () => {
       <form onSubmit={submitForm} className="space-y-5">
         <div>
           <label htmlFor="name" className="mb-2 block text-sm font-medium">Name</label>
-          <input type="text" id="name" className="block w-full rounded-lg border border-neutral-300 bg-white p-2.5 text-sm outline-hidden transition-colors placeholder:text-neutral-400 focus:border-neutral-950 dark:border-neutral-700 dark:bg-neutral-900 dark:focus:border-neutral-300" placeholder="name..." autoComplete="on" required />
+          <input type="text" id="name" name="name" maxLength={100} className="block w-full rounded-lg border border-neutral-300 bg-white p-2.5 text-sm outline-hidden transition-colors placeholder:text-neutral-400 focus:border-neutral-950 dark:border-neutral-700 dark:bg-neutral-900 dark:focus:border-neutral-300" placeholder="name..." autoComplete="on" required />
         </div>
         <div>
           <label htmlFor="email" className="mb-2 block text-sm font-medium">Email</label>
-          <input type="email" id="email" className="block w-full rounded-lg border border-neutral-300 bg-white p-2.5 text-sm outline-hidden transition-colors placeholder:text-neutral-400 focus:border-neutral-950 dark:border-neutral-700 dark:bg-neutral-900 dark:focus:border-neutral-300" placeholder="name@example.com" autoComplete="on" required />
+          <input type="email" id="email" name="email" maxLength={254} className="block w-full rounded-lg border border-neutral-300 bg-white p-2.5 text-sm outline-hidden transition-colors placeholder:text-neutral-400 focus:border-neutral-950 dark:border-neutral-700 dark:bg-neutral-900 dark:focus:border-neutral-300" placeholder="name@example.com" autoComplete="on" required />
         </div>
         <div>
           <label htmlFor="message" className="mb-2 block text-sm font-medium">Message</label>
-          <textarea id="message" rows={4} className="block w-full rounded-lg border border-neutral-300 bg-white p-2.5 text-sm outline-hidden transition-colors placeholder:text-neutral-400 focus:border-neutral-950 dark:border-neutral-700 dark:bg-neutral-900 dark:focus:border-neutral-300" placeholder="Leave a comment..." autoComplete="on" required></textarea>
+          <textarea id="message" name="message" rows={4} maxLength={5000} className="block w-full rounded-lg border border-neutral-300 bg-white p-2.5 text-sm outline-hidden transition-colors placeholder:text-neutral-400 focus:border-neutral-950 dark:border-neutral-700 dark:bg-neutral-900 dark:focus:border-neutral-300" placeholder="Leave a comment..." autoComplete="on" required></textarea>
         </div>
         <button
           type="submit"

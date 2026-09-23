@@ -1,13 +1,16 @@
 import mongoose from "mongoose";
 
 const connect = async () => {
+  // reuse the open connection across requests instead of reconnecting each time
+  if (mongoose.connection.readyState === 1) return;
+
+  const uri = process.env.MONGO_URI;
+  if (!uri) throw new Error("MONGO_URI is not set");
+
   try {
-    const uri = process.env.MONGO_URI;
-    if (!uri) throw new Error("MONGO_URI is not set");
     await mongoose.connect(uri);
-    console.log("Connected to MongoDB");
   } catch (error) {
-    throw new Error("Connection Faild:" + error);
+    throw new Error("Connection failed: " + error);
   }
 };
 
