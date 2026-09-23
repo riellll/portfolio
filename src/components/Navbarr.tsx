@@ -1,96 +1,81 @@
 'use client'
-import React, { useState } from 'react'
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, NavbarMenuToggle, NavbarMenuItem, NavbarMenu} from "@heroui/react";
+import { useState } from 'react'
 import { Link } from "react-scroll";
-import {navbarItem } from '@/constants';
+import { Menu, X } from "lucide-react";
+import { navbarItem, links } from '@/constants';
 import FloatingAction from './theme/FloatingAction';
 
 const Navbarr = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isActive, setIsActive] = useState('hero');
-
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} className='dark:bg-linear-to-r dark:from-gray-800 dark:to-slate-900 md:px-16 sm:px-14'>
-      <NavbarContent justify="start">
-        <NavbarItem>
-        <a href="#" className="flex items-center pr-4">
-            <h1 className="self-center text-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              gab.<span className="text-black dark:text-cyan-500">dev</span>
-            </h1>
-          </a>
-        </NavbarItem>
-      </NavbarContent>
-      
-      {/* <NavbarContent justify="end" className="sm:hidden">
-        <NavbarMenuToggle
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
-        />
-         <NavbarBrand>
-          <p className="font-bold text-inherit">ACME</p>
-        </NavbarBrand> 
-      </NavbarContent> */}
+    <header className="sticky top-0 z-40 border-b border-transparent bg-white/85 backdrop-blur-md dark:bg-neutral-950/85">
+      <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
+        <Link to="hero" smooth duration={500} className="flex cursor-pointer items-center gap-4">
+          <span className="text-2xl font-extrabold tracking-tight">GN</span>
+          <span className="hidden text-sm font-medium sm:block">Gabriel Napiere</span>
+        </Link>
 
-      <NavbarContent className="sm:flex gap-4" justify="center">
-        {navbarItem.map(item => (
-            <NavbarItem key={item.label} className='hidden sm:block cursor-pointer font-medium text-sm'>
+        <div className="hidden items-center gap-8 sm:flex">
+          {navbarItem.map(item => (
             <Link
-                    activeClass="active"
-                    to={item.value}
-                    spy={true}
-                    smooth={true}
-                    offset={-100}
-                    duration={500}
-                    // onSetActive={() => setIsActive(item.label)}
-                    // crossOrigin="true"
-                  >
-{item.label}
-                  </Link>
-          </NavbarItem>
-        ))}
-        <NavbarItem className='pr-4 sm:pl-4 sm:border-l border-r sm:border-r-0 pt-1.5 border-gray-500  dark:border-gray-700'>
-            <FloatingAction/>
-          </NavbarItem>
-          <NavbarMenuToggle
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
-        />
-      </NavbarContent>
-      {/* <NavbarContent className="hidden sm:flex gap-4" justify="end">  
-          <NavbarItem className='cursor-pointer'>
-            <FloatingAction/>
-          </NavbarItem>
-      </NavbarContent> */}
-      <NavbarMenu  className='dark:bg-linear-to-r dark:from-gray-800 dark:to-slate-900'>
-        {navbarItem.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              activeClass="active border-b-2 border-y-slate-700 dark:border-y-cyan-400"
+              key={item.value}
               to={item.value}
-              spy={true}
-              smooth={true}
-              offset={-50}
+              spy
+              smooth
+              offset={-80}
               duration={500}
-              delay={500}
-              onSetActive={() => setIsActive(item.value)}
+              activeClass="text-neutral-950! dark:text-white!"
+              className="cursor-pointer text-sm text-neutral-600 transition-colors hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white"
             >
-              <p onClick={() => setIsMenuOpen(!isMenuOpen)} className={isActive === item.value ? 'dark:text-cyan-500' : undefined}>{item.label}</p>
+              {item.label}
             </Link>
-          </NavbarMenuItem>
-        ))}
-        <NavbarMenuItem>
-            <a href="https://drive.google.com/file/d/1ZfstMQchKYjGlDkFyk6Gr0WUvF1XUWkT/view?usp=sharing" target="_blank">Resume</a>
-</NavbarMenuItem>
-        <NavbarMenuItem>
-            <a href="https://github.com/riellll" target="_blank">Github</a>
-</NavbarMenuItem>
-        <NavbarMenuItem>
-            <a href="https://www.linkedin.com/in/gabriel-noe-napiere-88009525a/" target="_blank">LinkdIn</a>
-</NavbarMenuItem>
-      </NavbarMenu>
-    </Navbar>
+          ))}
+          <FloatingAction />
+          <Link
+            to="contact"
+            smooth
+            offset={-80}
+            duration={500}
+            className="cursor-pointer rounded-lg bg-neutral-950 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
+          >
+            Contact
+          </Link>
+        </div>
+
+        <div className="flex items-center gap-4 sm:hidden">
+          <FloatingAction />
+          <button
+            type="button"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
+          </button>
+        </div>
+      </nav>
+
+      {isMenuOpen && (
+        <div className="flex flex-col gap-4 border-t border-neutral-200 bg-white px-6 py-6 text-sm sm:hidden dark:border-neutral-800 dark:bg-neutral-950">
+          {[...navbarItem, { value: "contact", label: "Contact" }].map(item => (
+            <Link
+              key={item.value}
+              to={item.value}
+              smooth
+              offset={-80}
+              duration={500}
+              onClick={() => setIsMenuOpen(false)}
+              className="cursor-pointer font-medium"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <a href={links.resume} target="_blank" rel="noreferrer">Resume</a>
+          <a href={links.github} target="_blank" rel="noreferrer">GitHub</a>
+          <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      )}
+    </header>
   )
 }
 

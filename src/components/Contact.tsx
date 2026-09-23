@@ -53,108 +53,40 @@ const Contact = () => {
   };
 
   return (
-    <div className="grid sm:gap-10 gap-5 pt-5 lg:mt-20 content-center justify-items-center text-center max-w-5xl mx-auto md:px-7 sm:mb-20 ">
-      <h1 className="text-3xl font-bold justify-self-start text-gray-900 dark:text-white ">
-        <span className="text-transparent bg-clip-text bg-linear-to-r from-gray-800 via-gray-900 to-gray-950 dark:to-emerald-600 dark:via-cyan-500 dark:from-cyan-400">
-          Contact Me
-        </span>
-      </h1>
-      <div className="grid grid-cols sm:grid-cols-2 gap-5">
-        <div className="text-start">
-          <h1 className="text-xl font-bold dark:text-gray-300 pb-2 sm:pb-3">
-            Hello,
-          </h1>
-          <p className="font-medium dark:text-gray-300">
-            Thank you for taking the time to explore my portfolio project.
-          </p>
-          <p className="font-medium dark:text-gray-300">
+    <div className="grid min-h-[calc(100svh-5rem)] content-center gap-12 border-t border-neutral-200 py-24 md:py-32 md:grid-cols-2 dark:border-neutral-800">
+      <div>
+        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Contact Me</h2>
+        <div className="mt-6 space-y-4 leading-relaxed text-neutral-600 dark:text-neutral-400">
+          <p>Thank you for taking the time to explore my portfolio project.</p>
+          <p>
             If you have any questions, feedback, or would like to discuss
             potential collaborations, I would love to hear from you. Please feel
             free to get in touch with me, just fill out the contact form.
           </p>
         </div>
-
-        <form onSubmit={submitForm}>
-          <div className="mb-6">
-            <label
-              htmlFor="name"
-              className="flex items-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              className="shadow-xs bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg outline-hidden ring-0 focus:shadow-none focus:outline-hidden border focus:border-slate-600 focus:ring-0 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-0 dark:focus:border-slate-600 dark:shadow-sm-light"
-              placeholder="name..."
-              autoComplete="on"
-              required
-            />
-          </div>
-          {/*           <div className="mb-6">
-            <label
-              htmlFor="company"
-              className="flex items-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Company
-            </label>
-            <input
-              type="text"
-              id="company"
-              className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-              placeholder="company..."
-              autoComplete="on"
-              required
-            />
-          </div> */}
-          <div className="mb-6">
-            <label
-              htmlFor="email"
-              className="flex items-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="shadow-xs bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg outline-hidden ring-0 focus:shadow-none focus:outline-hidden border focus:border-slate-600 focus:ring-0 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-0 dark:focus:border-slate-600 dark:shadow-sm-light"
-              placeholder="name@example.com"
-              autoComplete="on"
-              required
-            />
-          </div>
-
-          <label
-            htmlFor="message"
-            className="flex items-start mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Message
-          </label>
-          <textarea
-            id="message"
-            rows={4}
-            className="shadow-xs bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg outline-hidden ring-0 focus:shadow-none focus:outline-hidden border focus:border-slate-600 focus:ring-0 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-0 dark:focus:border-slate-600 dark:shadow-sm-light"
-            placeholder="Leave a comment..."
-            autoComplete="on"
-            required
-          ></textarea>
-          <div className="flex mt-6">
-            <button
-              type="submit"
-              className={`font-semibold grow rounded-lg py-2 px-3 text-white bg-slate-900 shadow-lg shadow-slate-900/50 ${
-                !sendLoading &&
-                `hover:shadow-xl hover:shadow-slate-900/40 hover:bg-slate-950`
-              } dark:text-black dark:shadow-lg dark:bg-linear-to-r dark:from-cyan-500 dark:via-cyan-400 dark:to-emerald-600 ${
-                !sendLoading &&
-                "dark:hover:bg-linear-to-br dark:hover:bg-gray-300 dark:hover:shadow-xl dark:hover:shadow-gray-950"
-              } dark:shadow-gray-950/80`}
-              disabled={sendLoading && true}
-            >
-              {sendLoading ? <LoadingButton /> : "Send Message"}
-            </button>
-          </div>
-        </form>
       </div>
+
+      <form onSubmit={submitForm} className="space-y-5">
+        <div>
+          <label htmlFor="name" className="mb-2 block text-sm font-medium">Name</label>
+          <input type="text" id="name" className="block w-full rounded-lg border border-neutral-300 bg-white p-2.5 text-sm outline-hidden transition-colors placeholder:text-neutral-400 focus:border-neutral-950 dark:border-neutral-700 dark:bg-neutral-900 dark:focus:border-neutral-300" placeholder="name..." autoComplete="on" required />
+        </div>
+        <div>
+          <label htmlFor="email" className="mb-2 block text-sm font-medium">Email</label>
+          <input type="email" id="email" className="block w-full rounded-lg border border-neutral-300 bg-white p-2.5 text-sm outline-hidden transition-colors placeholder:text-neutral-400 focus:border-neutral-950 dark:border-neutral-700 dark:bg-neutral-900 dark:focus:border-neutral-300" placeholder="name@example.com" autoComplete="on" required />
+        </div>
+        <div>
+          <label htmlFor="message" className="mb-2 block text-sm font-medium">Message</label>
+          <textarea id="message" rows={4} className="block w-full rounded-lg border border-neutral-300 bg-white p-2.5 text-sm outline-hidden transition-colors placeholder:text-neutral-400 focus:border-neutral-950 dark:border-neutral-700 dark:bg-neutral-900 dark:focus:border-neutral-300" placeholder="Leave a comment..." autoComplete="on" required></textarea>
+        </div>
+        <button
+          type="submit"
+          className="flex w-full justify-center rounded-lg bg-neutral-950 px-6 py-3 text-sm font-medium text-white transition-colors enabled:hover:bg-neutral-800 disabled:opacity-70 dark:bg-white dark:text-neutral-950 dark:enabled:hover:bg-neutral-200"
+          disabled={sendLoading}
+        >
+          {sendLoading ? <LoadingButton /> : "Send Message"}
+        </button>
+      </form>
     </div>
   );
 };

@@ -85,10 +85,89 @@ export const techImage = [
   },
 ];
 
-  
-  export const navbarItem = [
-    { value: "hero", label: "Home"},
-    { value: "about", label: "About"},
-    { value: "project", label: "Projects"},
-    { value: "contact", label: "Contact"},
-  ];
+
+export const links = {
+  github: "https://github.com/riellll",
+  linkedin: "https://www.linkedin.com/in/gabriel-noe-napiere-88009525a/",
+  resume: "https://drive.google.com/file/d/1ZfstMQchKYjGlDkFyk6Gr0WUvF1XUWkT/view?usp=sharing",
+  email: "griel034@gmail.com",
+};
+
+export const projects = [
+  {
+    title: "Cinezone",
+    subtitle: "Movie Collection App",
+    image: "/proj1.PNG",
+    desc: "A movie collection app for searching favorite films and discovering hidden gems across genres, eras, and cultures. Built with React and Next.js on the MovieDB API.",
+    tags: ["React", "JavaScript", "Next.js", "Tailwind CSS"],
+    demo: "https://cinezone-x.vercel.app/",
+    source: "https://github.com/riellll/cinezoneX",
+  },
+  {
+    title: "TechStack",
+    subtitle: "Tech News & Community Q&A",
+    image: "/proj2.PNG",
+    desc: "A tech community app that pairs the latest tech news with Stack Overflow Q&A. Built with React and Next.js using the TechNews API.",
+    tags: ["React", "JavaScript", "Next.js", "Tailwind CSS"],
+    demo: "https://techstack-ucode.vercel.app/",
+    source: null,
+  },
+  {
+    title: "Kodejobs",
+    subtitle: "Job Posting Platform",
+    image: "/proj3.PNG",
+    desc: "A job board where companies post openings and showcase themselves to candidates. Built with Next.js on a Node.js and Express backend.",
+    tags: ["React", "JavaScript", "Next.js", "Tailwind CSS", "Node.js", "Express"],
+    demo: "https://kodejob-2pa9.vercel.app/",
+    source: "https://github.com/riellll/kodejob.git",
+  },
+  {
+    title: "ThreadSync",
+    subtitle: "Threaded Social Platform",
+    image: "/proj4.PNG",
+    desc: "A social platform built around threaded conversations, where users share text and images, join discussions, and manage their profiles. Built with Next.js and MongoDB.",
+    tags: ["React", "JavaScript", "Next.js", "Tailwind CSS", "MongoDB"],
+    demo: "https://threadsync.vercel.app/",
+    source: "https://github.com/riellll/threadsync",
+  },
+] as const;
+
+export const experience = [
+  {
+    role: "Software Engineer",
+    company: "US-based Real Estate Technology Company",
+    period: "Jul 2024 — Sep 2026",
+    desc: "Built and maintained full-stack features across multiple applications and services for a real estate platform, including property workflows, offers, billing, and authentication. Worked with Next.js, React, TypeScript, Node.js, PostgreSQL, and third-party integrations.",
+  },
+  {
+    role: "Software Engineer Intern",
+    company: "OneLot",
+    period: "Jan 2024 — Apr 2024",
+    desc: "Developed and maintained features for real estate-related applications, collaborating with the team across both frontend and backend development.",
+  },
+];
+
+export const technologies = [
+  "TypeScript",
+  "JavaScript",
+  "React",
+  "Next.js",
+  "Node.js",
+  "Express",
+  "PostgreSQL",
+  "MongoDB",
+  "Prisma",
+  "REST APIs",
+  "Tailwind CSS",
+  "Git",
+  "Docker",
+  "Vercel",
+  "MCP",
+  "Claude",
+];
+
+export const navbarItem = [
+  { value: "project", label: "Projects" },
+  { value: "experience", label: "Experience" },
+  { value: "about", label: "About" },
+];
