@@ -89,7 +89,7 @@ export const techImage = [
 export const links = {
   github: "https://github.com/riellll",
   linkedin: "https://www.linkedin.com/in/gabriel-noe-napiere-88009525a/",
-  resume: "https://drive.google.com/file/d/1ZfstMQchKYjGlDkFyk6Gr0WUvF1XUWkT/view?usp=sharing",
+  resume: "https://drive.google.com/file/d/1MT5yBRqQJyXrdA3pBLVXk1Jo_XHyQkR5/view",
   email: "griel034@gmail.com",
 };
 
