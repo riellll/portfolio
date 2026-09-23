@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Lock } from "lucide-react";
 import { projects } from "@/constants";
 
 const Project = () => {
@@ -13,23 +13,25 @@ const Project = () => {
         {projects.map((project) => (
           <li
             key={project.title}
-            className="grid gap-6 border-t border-neutral-200 py-10 first:border-t-0 first:pt-0 md:grid-cols-[16rem_1fr] md:gap-x-10 lg:grid-cols-[18rem_1fr_8rem] dark:border-neutral-800"
+            className="grid gap-6 border-t border-neutral-200 py-10 first:border-t-0 first:pt-0 md:grid-cols-[16rem_1fr] md:gap-x-10 lg:grid-cols-[18rem_1fr_9rem] dark:border-neutral-800"
           >
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noreferrer"
-              tabIndex={-1}
-              className="block self-start overflow-hidden rounded-lg border border-neutral-200 md:row-span-2 lg:row-span-1 dark:border-neutral-800"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={project.image}
-                alt={`${project.title} screenshot`}
-                loading="lazy"
-                className="aspect-video w-full object-cover object-top"
-              />
-            </a>
+            <div className="self-start overflow-hidden rounded-lg border border-neutral-200 md:row-span-2 lg:row-span-1 dark:border-neutral-800">
+              {project.image ? (
+                <a href={project.demo} target="_blank" rel="noreferrer" tabIndex={-1} className="block">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={project.image}
+                    alt={`${project.title} screenshot`}
+                    loading="lazy"
+                    className="aspect-video w-full object-cover object-top"
+                  />
+                </a>
+              ) : (
+                <div className="grid aspect-video place-items-center bg-neutral-50 dark:bg-neutral-900">
+                  <span className="text-lg font-semibold text-neutral-400">{project.title}</span>
+                </div>
+              )}
+            </div>
 
             <div>
               <h3 className="text-xl font-semibold">{project.title}</h3>
@@ -49,15 +51,17 @@ const Project = () => {
             </div>
 
             <div className="flex gap-6 text-sm font-medium md:col-start-2 lg:col-start-auto lg:flex-col lg:gap-3">
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noreferrer"
-                className="group inline-flex items-center gap-1.5 text-blue-600 underline underline-offset-4 dark:text-blue-400"
-              >
-                Live site
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-              </a>
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center gap-1.5 text-blue-600 underline underline-offset-4 dark:text-blue-400"
+                >
+                  Live site
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                </a>
+              )}
               {project.source && (
                 <a
                   href={project.source}
@@ -68,6 +72,12 @@ const Project = () => {
                   View code
                   <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
+              )}
+              {project.isPrivate && (
+                <span className="inline-flex items-center gap-1.5 font-normal whitespace-nowrap text-neutral-500 dark:text-neutral-400">
+                  <Lock className="size-3.5" />
+                  Private repository
+                </span>
               )}
             </div>
           </li>

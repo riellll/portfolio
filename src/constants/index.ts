@@ -93,7 +93,28 @@ export const links = {
   email: "griel034@gmail.com",
 };
 
-export const projects = [
+type Project = {
+  title: string;
+  subtitle: string;
+  desc: string;
+  tags: string[];
+  image?: string;
+  demo?: string;
+  source?: string;
+  // the code can't be shared, so show a "Private repository" note instead of a link
+  isPrivate?: boolean;
+};
+
+export const projects: Project[] = [
+  {
+    title: "Spendwise",
+    subtitle: "Bank Statement Spending Insights",
+    desc: "Turns PDF bank statements into spending insights: upload a statement and every transaction is extracted into dashboards, analytics, and CSV reports. Includes a Claude-powered assistant that logs expenses from chat or receipt photos, plus a Pro plan paid through PayMongo.",
+    tags: ["Next.js", "TypeScript", "MongoDB", "Claude API", "PayMongo"],
+    image: "/spendwise.png",
+    demo: "https://credit-management-eta.vercel.app/",
+    isPrivate: true,
+  },
   {
     title: "Cinezone",
     subtitle: "Movie Collection App",
@@ -110,7 +131,6 @@ export const projects = [
     desc: "A tech community app that pairs the latest tech news with Stack Overflow Q&A. Built with React and Next.js using the TechNews API.",
     tags: ["React", "JavaScript", "Next.js", "Tailwind CSS"],
     demo: "https://techstack-ucode.vercel.app/",
-    source: null,
   },
   {
     title: "Kodejobs",
@@ -130,7 +150,7 @@ export const projects = [
     demo: "https://threadsync.vercel.app/",
     source: "https://github.com/riellll/threadsync",
   },
-] as const;
+];
 
 export const experience = [
   {
